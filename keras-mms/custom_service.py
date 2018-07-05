@@ -15,11 +15,11 @@ from mms.model_service.mxnet_model_service import MXNetBaseService
 from mms.utils.mxnet import image, ndarray
 
 
-class MXNetVisionService(MXNetBaseService):
-    """MXNetVisionService defines a fundamental service for image classification task.
+class CustomService(MXNetBaseService):
+    """CustomService defines a custom service for image classification task.
     In preprocess, input image buffer is read to NDArray and resized respect to input
     shape in signature.
-    In post process, top-5 labels are returned.
+    In post process, top-2 labels are returned.
     """
     def _preprocess(self, data):
         img_list = []
@@ -37,6 +37,4 @@ class MXNetVisionService(MXNetBaseService):
         assert hasattr(self, 'labels'), \
             "Can't find labels attribute. Did you put synset.txt file into " \
             "model archive or manually load class label file in __init__?"
-        print(ndarray)
         return [ndarray.top_probability(d, self.labels, top=2) for d in data]
-        #return {label:prob for prob, label in zip(d, self.labels)}

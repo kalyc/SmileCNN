@@ -19,9 +19,9 @@ np.random.shuffle(indices)
 X = X[indices]
 y = y[indices]
 
-print(X.shape)
+# Convert data to channels first format for saving the model 
 X = k.utils.to_channels_first(X)
-print(X.shape)
+
 # prepare weighting for classes since they're unbalanced
 class_totals = y.sum(axis=0)
 class_weight = class_totals.max() / class_totals
@@ -60,5 +60,6 @@ n_validation = int(len(X) * validation_split)
 y_predicted = model.predict(X[-n_validation:])
 print roc_auc_score(y[-n_validation:], y_predicted)
 
+# Save trained keras-mxnet model for export
 k.models.save_mxnet_model(model=model, prefix='smileCNN_model')
 print(X.shape)
