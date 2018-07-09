@@ -1,3 +1,8 @@
+import numpy as np
+from skimage.measure import block_reduce
+from skimage.io import imread
+
+
 # Load training images
 from utils import list_all_files
 negative_paths = list(list_all_files('SMILEsmileD-master/SMILEs/negatives/negatives7/', ['.jpg']))
@@ -5,10 +10,6 @@ print('loaded', len(negative_paths), 'negative examples')
 positive_paths = list(list_all_files('SMILEsmileD-master/SMILEs/positives/positives7/', ['.jpg']))
 print('loaded', len(positive_paths), 'positive examples')
 examples = [(path, 0) for path in negative_paths] + [(path, 1) for path in positive_paths]
-
-import numpy as np
-from skimage.measure import block_reduce
-from skimage.io import imread
 
 # Convert loaded images into numpy arrays
 def examples_to_dataset(examples, block_size=2):

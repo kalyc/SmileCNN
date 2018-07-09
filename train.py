@@ -5,6 +5,7 @@ from keras.layers.core import Dense, Dropout, Flatten, Reshape
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.utils import np_utils
 
+
 # Load the data
 X = np.load('X.npy')
 y = np.load('y.npy')

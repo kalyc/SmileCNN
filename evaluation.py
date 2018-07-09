@@ -17,7 +17,6 @@ def print_indicator(data, model, class_names, bar_width=25):
     right_side = '-' * right_count
     print(class_names[0], left_side + '###' + right_side, class_names[1])
 
-
 X = np.load('X.npy')
 class_names = ['non-smiling', 'smiling']
 img = X[-7]
