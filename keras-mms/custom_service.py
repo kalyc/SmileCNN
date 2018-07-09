@@ -8,7 +8,8 @@
 # express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-"""`MXNetVisionService` defines a MXNet base vision service
+"""
+`CustomService` defines a MXNet base vision service
 """
 
 from mms.model_service.mxnet_model_service import MXNetBaseService
@@ -24,10 +25,9 @@ class CustomService(MXNetBaseService):
     def _preprocess(self, data):
         img_list = []
         for idx, img in enumerate(data):
-            input_shape = self.signature['inputs'][idx]['data_shape']
-            # We are assuming input shape is NCHW
+            input_shape = self.signature['inputs'][idx]['data_shape']  # Input shape is NCHW
             [h, w] = input_shape[2:]
-            img_arr = image.read(img, 0)
+            img_arr = image.read(img, 0) #Set flag to 0 for reading grayscale images
             img_arr = image.resize(img_arr, w, h)
             img_arr = image.transform_shape(img_arr)
             img_list.append(img_arr)
