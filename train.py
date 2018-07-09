@@ -5,15 +5,15 @@ from keras.layers.core import Dense, Dropout, Flatten, Reshape
 from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.utils import np_utils
 
-# load the data
+# Load the data
 X = np.load('X.npy')
 y = np.load('y.npy')
 
-# convert classes to vector
+# Convert classes to vector
 nb_classes = 2
 y = np_utils.to_categorical(y, nb_classes).astype(np.float32)
 
-# shuffle all the data
+# Shuffle all the data
 indices = np.arange(len(X))
 np.random.shuffle(indices)
 X = X[indices]
@@ -22,7 +22,7 @@ y = y[indices]
 # Convert data to channels first format for saving the model 
 X = k.utils.to_channels_first(X)
 
-# prepare weighting for classes since they're unbalanced
+# Prepare weighting for classes since they're unbalanced
 class_totals = y.sum(axis=0)
 class_weight = class_totals.max() / class_totals
 epochs = 100
@@ -46,7 +46,6 @@ model.add(Dense(nb_classes, activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 model.summary()
-
 
 validation_split = 0.10
 model.fit(X, y, batch_size=128, class_weight=class_weight, epochs=epochs, verbose=1, validation_split=validation_split)
