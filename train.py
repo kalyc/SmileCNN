@@ -35,7 +35,6 @@ nb_pool = 2
 nb_conv = 3
 
 model = Sequential()
-
 model.add(Conv2D(nb_filters, (nb_conv, nb_conv), activation='relu', input_shape=X.shape[1:]))
 model.add(Conv2D(nb_filters, (nb_conv, nb_conv), activation='relu'))
 model.add(MaxPooling2D(pool_size=(nb_pool, nb_pool)))
@@ -58,7 +57,7 @@ model.save_weights('weights.h5')
 from sklearn.metrics import roc_auc_score
 n_validation = int(len(X) * validation_split)
 y_predicted = model.predict(X[-n_validation:])
-print roc_auc_score(y[-n_validation:], y_predicted)
+print(roc_auc_score(y[-n_validation:], y_predicted))
 
 # Save trained keras-mxnet model for export
 k.models.save_mxnet_model(model=model, prefix='smileCNN_model')
