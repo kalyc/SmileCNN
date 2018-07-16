@@ -17,4 +17,4 @@ Run `sudo python setup.py install` to add the necessary dependencies
 
 # Documentation
 
-Please follow instructions on the [medium blogpost](https://medium.com/p/f419d5e0f4a4/edit) to use this smile detection model with MXNet Model Server
+Please follow instructions on the [medium blogpost](https://medium.com/apache-mxnet/deploy-a-smile-detector-with-keras-mxnet-and-mxnet-model-server-48cd9741b6d2) to use this smile detection model with MXNet Model Server
