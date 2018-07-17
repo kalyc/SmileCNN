@@ -1,6 +1,6 @@
+from __future__ import print_function
 import keras as k
 import mxnet as mx
-from scipy import misc
 import numpy as np
 
 
