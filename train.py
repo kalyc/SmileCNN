@@ -27,7 +27,7 @@ X = k.utils.to_channels_first(X)
 # Prepare weighting for classes since they're unbalanced
 class_totals = y.sum(axis=0)
 class_weight = class_totals.max() / class_totals
-epochs = 1
+epochs = 100
 print(X.dtype, X.min(), X.max(), X.shape)
 print(y.dtype, y.min(), y.max(), y.shape)
 
