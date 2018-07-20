@@ -30,6 +30,7 @@ class CustomService(MXNetBaseService):
             img_arr = image.read(img, 0) #Set flag to 0 for reading grayscale images
             img_arr = image.resize(img_arr, w, h)
             img_arr = image.transform_shape(img_arr)
+            img_arr = img_arr.astype('float32') / 256.0 
             img_list.append(img_arr)
         return img_list
 
